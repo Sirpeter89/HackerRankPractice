@@ -44,6 +44,8 @@ function birthday(s, d, m) {
     
     let splittableWays = 0;
     
+    let visualArray = []
+    
     
     while(endPointer < s.length){
         
@@ -51,13 +53,16 @@ function birthday(s, d, m) {
         while(endPointer - beginningPointer !== birthdayLength){
             //start moving the pointer
             currentSum += s[endPointer];
+            visualArray.push(s[endPointer])
             endPointer++;
-            if(currentSum === birthdaySum){
+            if(currentSum === birthdaySum && endPointer - beginningPointer === birthdayLength){
+                console.log(visualArray)
                 splittableWays++;
             }
         }
         
         if(endPointer - beginningPointer === birthdayLength){
+            visualArray.shift(s[endPointer])
             currentSum -= s[beginningPointer];
             beginningPointer++;
         }
