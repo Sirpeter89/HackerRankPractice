@@ -44,37 +44,26 @@ function birthday(s, d, m) {
     
     let splittableWays = 0;
     
-    //[2,2,1,3,2]
     
-    if(birthdayLength === 1){
-        s.forEach( integer => {
-            if (integer === birthdaySum){
-                splittableWays += 1;
-            }
-        })
-    } else {
-        // //while length of current window is not same as birthday length
-        // while(endPointer - beginningPointer + 1 !== birthdayLength){
-        //     //start moving the pointer
-        //     currentSum += s[endPointer];
-        //     endPointer++;
-        //     if(currentSum === birthdaySum){
-        //         splittableWays++;
-        //     }
-        // }
-        //while the end of the window is not at the end of the array yet
-        while(endPointer < s.length){
-            while(endPointer - beginningPointer + 1 !== birthdayLength){
-                //start moving the pointer
-                currentSum += s[endPointer];
-                endPointer++;
-                if(currentSum === birthdaySum){
-                    splittableWays++;
-                }
+    while(endPointer < s.length){
+        
+        //while endPointer is not 1 past birthdayLength
+        while(endPointer - beginningPointer !== birthdayLength){
+            //start moving the pointer
+            currentSum += s[endPointer];
+            endPointer++;
+            if(currentSum === birthdaySum){
+                splittableWays++;
             }
         }
+        
+        if(endPointer - beginningPointer === birthdayLength){
+            currentSum -= s[beginningPointer];
+            beginningPointer++;
+        }
+        
     }
-    
+
     return splittableWays;
     
 }
