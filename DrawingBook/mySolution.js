@@ -38,9 +38,9 @@ function pageCount(n, p) {
     if( n%2 === 0 ){
         //get minimum between turning from the front and the end
             //turning from the front would be p/2 pages
-        Math.min( Math.floor(p/2), )
+        return Math.min( Math.floor(p/2), Math.floor( (n-p)/2)+1 )
     } else {
-        Math.min( Math.floor(p/2), )
+        return Math.min( Math.floor(p/2), Math.floor( (n-p)/2) )
     }
 }
 
