@@ -56,9 +56,24 @@ function caesarCipher(s, k) {
     //start conversion of input string
     let answer =""
 
-    s.forEach( char => {
+    for(let i = 0; i < s.length; i++){
+        const char = s[i]
+        //if letter
+        if (cypherMap.hasOwnProperty(char.toLowerCase())){
 
-    })
+            if(char === char.toUpperCase()){
+                //if Upper Case
+                answer += cypherMap[char.toLowerCase()].toUpperCase()
+            } else {
+                //if Lower Case
+                answer += cypherMap[char.toLowerCase()]
+            }
+
+        } else {
+            answer += char
+        }
+    }
+    return answer;
 }
 
 function main() {
